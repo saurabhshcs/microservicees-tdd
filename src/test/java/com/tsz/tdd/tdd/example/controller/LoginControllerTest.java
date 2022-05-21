@@ -34,7 +34,7 @@ class LoginControllerTest
     @Test
     void shouldNotLoginWhenUserIdIsNull() throws Exception
     {
-        final String userId = "saurabh.sharma4@bp.com";
+        final String userId = "saurabhshcs@gmail.com";
 
         mockMvc.perform(get("").accept(MediaTypes.HAL_FORMS_JSON_VALUE))
                 .andDo(print())
