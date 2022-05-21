@@ -23,9 +23,19 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    	}
+	testImplementation 'org.mockito:mockito-junit-jupiter:2.23.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+test {
+    minHeapSize = "128m"
+    maxHeapSize = "2G"
+    jvmArgs = ['-Xms128M', '-Xmx2G']
+    useJUnitPlatform()
 }
